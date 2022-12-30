@@ -1,9 +1,74 @@
 <!DOCTYPE html>
+
 <html>
   <head>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeAersjAAAAANMknAWJG5w9O7fHm4KZDoGR5CWX"></script>
     <base target="_top" />
+    <script>
+      grecaptcha.ready(function () {
+        grecaptcha
+          .execute("6LeAersjAAAAANMknAWJG5w9O7fHm4KZDoGR5CWX", {
+            action: "submit",
+          })
+          .then(function (token) {
+            document.getElementById("g-recaptcha-response").value = token;
+          });
+      });
+    </script>
   </head>
   <body>
     <p>Hi, Strub</p>
+    <input type="text" name="_gotcha" style="display: none" />
+    <form action="https://formspree.io/f/mknawdlo" method="POST">
+      <fieldset id="fs-frm-inputs">
+        <label for="full-name">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          id="full-name"
+          placeholder="First and Last"
+          required=""
+          style=""
+        />
+        <label for="email-address">Email Address</label>
+        <input
+          type="email"
+          name="_replyto"
+          id="email-address"
+          placeholder="email@example.com"
+          required=""
+        />
+        <label for="telephone">Phone Number (Optional)</label>
+        <input
+          type="telephone"
+          name="telephone"
+          id="telephone"
+          placeholder="(555) 555-5555"
+        />
+        <label for="message">Message</label>
+        <textarea
+          rows="6"
+          name="message"
+          id="message"
+          placeholder=""
+          required=""
+        ></textarea>
+        <input
+          type="hidden"
+          name="_subject"
+          id="email-subject"
+          value="Website Form Submission"
+        />
+      </fieldset>
+      <input
+        type="hidden"
+        id="g-recaptcha-response"
+        name="g-recaptcha-response"
+      />
+      <input type="submit" class="btn btn-primary" value="submit" />
+    </form>
   </body>
+  <html>
+    <!-- https://help.formspree.io/hc/en-us/articles/4411635023507-Using-reCAPTCHA-v3 -->
+  </html>
 </html>
