@@ -210,7 +210,8 @@ html(lang='en')
                 // https://startbootstrap.com/solution/contact-forms
                 // to get an API token!
 
-                form#contactForm(data-sb-form-api-token='API_TOKEN')
+                //- input(type="text", name="_gotcha", style="display: none")
+                form#contactForm(action="https://formspree.io/f/mknawdlo", method="POST")
                     .row.align-items-stretch.mb-5
                         .col-md-6
                             .form-group
@@ -219,6 +220,8 @@ html(lang='en')
                                 input#name.form-control(
                                     type='text',
                                     placeholder='Your Name *',
+                                    name="name",
+                                    required="",
                                     data-sb-validations='required'
                                 )
                                 .invalid-feedback(data-sb-feedback='name:required')
@@ -227,9 +230,11 @@ html(lang='en')
                             .form-group
 
                                 // Email address input
-                                input#email.form-control(
+                                input#email-address.form-control(
                                     type='email',
                                     placeholder='Your Email *',
+                                    name="_replyto",
+                                    required="",
                                     data-sb-validations='required,email'
                                 )
                                 .invalid-feedback(data-sb-feedback='email:required')
@@ -240,9 +245,10 @@ html(lang='en')
                             .form-group.mb-md-0
 
                                 // Phone number input
-                                input#phone.form-control(
+                                input#telephone.form-control(
                                     type='tel',
                                     placeholder='Your Phone *',
+                                    name="telephone",
                                     data-sb-validations='required'
                                 )
                                 .invalid-feedback(data-sb-feedback='phone:required')
@@ -254,10 +260,13 @@ html(lang='en')
                                 // Message input
                                 textarea#message.form-control(
                                     placeholder='Your Message *',
-                                    data-sb-validations='required'
+                                    data-sb-validations='required',
+                                    name="message",
+                                    required=""
                                 )
                                 .invalid-feedback(data-sb-feedback='message:required')
                                     | A message is required.
+                            //- input#g-recaptcha-response(type="hidden", name="g-recaptcha-response", style="display: none")
 
                     // Submit success message
                     //
@@ -281,7 +290,7 @@ html(lang='en')
 
                     // Submit Button
                     .text-center
-                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit') Send Message
+                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase(type='submit') Send Message
 
         // Footer
         footer.footer.py-4
